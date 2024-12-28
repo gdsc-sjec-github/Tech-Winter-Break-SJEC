@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 
 const parcelSchema = new mongoose.Schema({
   trackingNumber: { type: String, required: true, unique: true },
-  sender: { type: String, required: true },
   recipient: { type: String, required: true },
   address: { type: String, required: true },
   status: { 
