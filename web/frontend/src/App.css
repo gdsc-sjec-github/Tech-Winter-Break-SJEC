@@ -14,5 +14,4 @@ html, body, #root {
   padding: 0;
   box-sizing: border-box;
   height: 100%;
-  @apply bg-background;
 }

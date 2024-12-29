@@ -10,7 +10,7 @@ const Register = () => {
   }
 
   return (
-    <div className='w-full h-full flex justify-center items-center'>
+    <div className='w-full h-full flex bg-background justify-center items-center'>
         <div className='flex flex-col justify-center items-center w-full h-full sm:max-h-[600px] mx-auto sm:rounded-2xl bg-white sm:max-w-xl px-4 sm:px-10 py-8 sm:my-8'>
             <h1 className='text-xl mt-2 text-center sm:text-xl tracking-wider font-bold'>Welcome to Parcel Monitor!</h1>
             <p className='text-gray-400 text-sm sm:text-md tracking-tight max-w-[350px] font-medium text-center mt-4 px-6'>Register your first account today.You Send, We Track, You're Notified - Always in the Loop.</p>
