@@ -2,9 +2,11 @@ import React from 'react'
 import { Menu, X } from "lucide-react"
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useModal } from './ModelContext'
 import defaultImg from '../assets/default-profile.jpg'
 
 const NavBar = () => {
+    const { openModal } = useModal();
     const [ drawerOpen, SetDrawerOpen ] = useState(false);
 
     const toggleNavbar = () => {
@@ -18,7 +20,7 @@ const NavBar = () => {
             <div className='flex justify-between items-center gap-4 max-w-[600px]'>
                 <Link to='/login' className='hidden md:block text-sm font-medium bg-white text-black rounded-2xl px-4 py-1'>Login</Link>
                 <Link to='/register' className='hidden md:block text-sm font-medium bg-white text-black rounded-2xl px-4 py-1'>Register</Link>
-                <Link to='/register' className='hidden md:block text-sm font-medium bg-white text-black rounded-2xl px-4 py-1'>Create Task</Link>
+                <button onClick={() => openModal('create')} className='hidden md:block text-sm font-medium bg-white text-black rounded-2xl px-4 py-1'>Create Task</button>
                 <div className="md:hidden flex justify-center items-center">
                     <button onClick={toggleNavbar}>
                         { drawerOpen ? <X /> : <Menu /> }
@@ -33,7 +35,7 @@ const NavBar = () => {
         <div className='absolute top-[60px] left-0 w-full bg-zinc-800 text-white p-4 flex flex-col space-y-4 md:hidden'>
           <Link to='/login' className='text-sm font-medium'>Login</Link>
           <Link to='/register' className='text-sm font-medium'>Register</Link>
-          <Link to='/create-task' className='text-sm font-medium'>Create Task</Link>
+          <div onClick={() => openModal('create')} className='text-sm font-medium'>Create Task</div>
         </div>
       )}
     </nav>

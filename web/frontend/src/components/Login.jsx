@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -49,8 +50,8 @@ const Login = () => {
                     />
                     {errors.password && <p className="mt-1 text-red-500 text-xs">{errors.password.message}</p>}
                 </div>
-                <button className='bg-zinc-950 text-white text-sm px-6 sm:px-12 text-center py-2 tracking-tight rounded-2xl'>Login</button>
-                <p className='text-xs lg:text-sm text-center text-gray-400 font-medium mt-4'>Don't have an account? <a className='text-black font-semibold'>Register</a></p>
+                <button type='submit' className='bg-zinc-950 text-white text-sm px-6 sm:px-12 text-center py-2 tracking-tight rounded-2xl'>Login</button>
+                <p className='text-xs lg:text-sm text-center text-gray-400 font-medium mt-4'>Don't have an account? <Link to='/register' className='text-black font-semibold'>Register</Link></p>
             </form>
         </div>
     </div>

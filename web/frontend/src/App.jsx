@@ -1,7 +1,8 @@
 import Register from './components/Register'
 import Login from './components/Login'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Admin from './components/Admin'
 import Home from './components/Home'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path='*' element={<div>Error 404</div>} />
       </Routes>
     </Router>

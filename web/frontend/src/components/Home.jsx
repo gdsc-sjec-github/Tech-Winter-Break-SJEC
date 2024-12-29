@@ -1,14 +1,18 @@
 import React from 'react'
 import NavBar from './NavBar'
+import EditModal from './EditModal'
+import CreateModal from './CreateModal'
 import { useState } from 'react'
-import { Edit, Trash } from 'lucide-react'
+import { Edit, Trash} from 'lucide-react'
+import { useModal } from './ModelContext'  
 
 const Home = () => {
-    // ADD CONDITIONAL RENDERING FOR DIFFERENT HOMEPAGE
     const login = false
 
+    const { isModalOpen, openModal, modalType } = useModal();
     const [selectedTab, setSelectedTab] = useState('accepted');
 
+    // FOR DEMO PURPOSES ONLY, A USE EFFECT FUNCTION SHOULD REPLACE THIS
     const products = {
         pending: [
           { id: 1, name: 'Product 1 (Pending)' },
@@ -27,13 +31,13 @@ const Home = () => {
     const handleButtonClick = (tab) => {
         setSelectedTab(tab);
       };
-    
+
 
     return (
     <>
         <NavBar />
         {login ? (
-            <div className='w-full h-full bg-background'>
+            <div className='w-full h-full flex justify-center items-center bg-background'>
                 <h1 className='pt-8 pl-4 text-5xl sm:text-7l font-semibold'>Welcome, <span className='bg-gradient-to-r from-blue-700 to-blue-400 text-transparent bg-clip-text'>User</span></h1>
             </div>
         ) : (
@@ -53,17 +57,19 @@ const Home = () => {
                             <div>{ product.name }</div>
                             <div>19 Feb 2024</div>
                             <div className='hidden md:flex min-w-[150px] gap-2'>
-                                <button className='w-1/2 p-2 text-md border border-indigo-800 bg-indigo-400 rounded-xl'>Edit</button>
+                                <button className='w-1/2 p-2 text-md border border-indigo-800 bg-indigo-400 rounded-xl' onClick={() => openModal('edit')}>Edit</button>
                                 <button className='w-1/2 p-2 text-md border border-red-800 bg-red-400 rounded-xl'>Delete</button>
                             </div>
                             <div className='flex md:hidden gap-2'>
-                                <button className='w-1/2 p-1 font-light text-xs border text-indigo-800 border-indigo-800 bg-indigo-400 rounded-xl'><Edit /></button>
+                                <button className='w-1/2 p-1 font-light text-xs border text-indigo-800 border-indigo-800 bg-indigo-400 rounded-xl' onClick={() => openModal('edit')}><Edit /></button>
                                 <button className='w-1/2 p-1 font-light text-xs border text-red-800 border-red-800 bg-red-400 rounded-xl'><Trash /></button>
                             </div>
                         </li>
                     ))}
                     </ul>
                 </div>
+                {isModalOpen && modalType === 'edit' && <EditModal />}
+                {isModalOpen && modalType === 'create' && <CreateModal />}
             </div>
         )}
     </>
