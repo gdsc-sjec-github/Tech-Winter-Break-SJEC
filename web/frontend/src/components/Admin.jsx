@@ -45,7 +45,7 @@ const Admin = () => {
           <div className='h-6 w-6 rounded-full overflow-hidden'>
             <img src={defaultImg} alt='Default profile picture' />
           </div>
-          <p className={`hidden ${isSidebarOpen && 'md:block'} ml-2 text-sm md:text-md font-medium`}>Sandeep Malhotra</p>
+          <p className={`${isSidebarOpen ? 'block' : 'hidden'} ml-2 text-sm md:text-md font-medium`}>Sandeep Malhotra</p>
         </div>
       </div>
 

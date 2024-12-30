@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Edit, Trash } from 'lucide-react'
 import EditModal from './EditModal'
 import { useModal } from './ModelContext' 
+import Card from './Card'
 
 const DashBoard = () => {
    const [selectedTab, setSelectedTab] = useState('accepted');
@@ -34,11 +35,11 @@ const DashBoard = () => {
           <h1 className="mt-10 text-xl font-semibold sm:text-3xl sm:font-bold pl-8">Delivery Log</h1>
           <p className="mt-1 text-gray-500 text-xs sm:text-sm pl-8">Home {'>'} Delivery Log</p>
           <div className='mt-5 pl-8'>
-            <div className="mr-4 bg-gray-100 p-6 rounded-lg shadow-md">
-                <h2 className="text-xl font-semibold">Admin Details</h2>
-                <p className="mt-2">Name: Admin User</p>
-                <p>Email: admin@example.com</p>
-                <p>Role: Admin</p>
+            <div className="mr-4 flex flex-col md:flex-row gap-4 rounded-lg">
+                <Card />
+                <Card />
+                <Card />
+                <Card />
             </div>
           </div>
         </div>
