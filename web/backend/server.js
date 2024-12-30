@@ -17,12 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 connectDB();
 
 // setup routes
-app.use('/', userRoutes); // the routes accesible to every user i.e. registration... etc
-app.use('/', adminRoutes); // otutes accessible to admin like product arrived... etc
-
-app.get('/', (req, res) => {
-    res.send("Welcome to Parcel Monitor");
-})
+app.use('', commonRoutes)
+app.use('', userRoutes); // the routes accesible to every user i.e. registration... etc
+app.use('', adminRoutes); // otutes accessible to admin like product arrived... etc
 
 // all undefined routes go here
 app.get('*', (req, res) => {
