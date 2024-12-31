@@ -1,8 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import connectDB from './config/db.js';  
 import userRoutes from './routes/userRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import commonRoutes from './routes/commonRoutes.js';
 
 // Loads all the enviornment variable
 dotenv.config();
@@ -10,6 +12,10 @@ const PORT = process.env.PORT;
 
 // Create an express server and add all the necessary middleware
 const app = express();
+app.use(cors({
+    origin: 'http://localhost:5173', 
+    credentials: true, 
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

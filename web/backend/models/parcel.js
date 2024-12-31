@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
+import { v4 as uuidv4 } from 'uuid';
 
 const parcelSchema = new mongoose.Schema({
+  _id: { type: String, default: uuidv4 },
   trackingNumber: { type: String, required: true, unique: true },
   parcelName: { type: String, required: true },
   recipient: { type: String, required: true },
@@ -21,5 +23,4 @@ const parcelSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now }
 });
 
-const Parcel = mongoose.model('Parcel', parcelSchema);
-export default Parcel;
+export const Parcel = mongoose.model('Parcel', parcelSchema);

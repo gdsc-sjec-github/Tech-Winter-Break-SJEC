@@ -1,13 +1,37 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useFetch } from './useFetch'
+import Cookies from 'js-cookie'
+// import decode from 'jwt-decode';
 
 const Login = () => {
+  const { createData, loading, error } = useFetch();
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
-  // ADD FUNCTIONALITY HERE
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    // Send the login request
+    await createData('/api/login', { 
+        email: data.email,
+        password: data.password,
+    });
+
+    // Check if login was successful
+    if (!error) {
+      const token = Cookies.get('token');
+      console.log(token); 
+      // const decodedToken = decode(token);
+      // console.log(decodedToken);
+
+      // if ( decodedToken.role === 'admin' ){
+      //   navigate('/admin')
+      // }else {
+      //   navigate('/dashboard');
+      // }
+    }else {
+      alert(error);
+    }
   }
 
   return (

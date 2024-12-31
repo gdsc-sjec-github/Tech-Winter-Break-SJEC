@@ -1,5 +1,5 @@
 import express from 'express';
-import { createMyOrder, deleteMyOrder, editMyOrder, getMyOrder } from '../controllers/parcelController';
+import { createMyOrder, deleteMyOrder, editMyOrder, getMyOrder } from '../controllers/parcelController.js';
 
 const router = express.Router();
 

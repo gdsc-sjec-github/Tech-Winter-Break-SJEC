@@ -1,6 +1,6 @@
-import { Parcel } from '../models/parcel';
+import { Parcel } from '../models/parcel.js';
 
-const createMyOrder = async (req, res) => {
+export const createMyOrder = async (req, res) => {
     const { trackingNumber, parcelName, recipient, status, items, arrivalDate } = req.body;
   
     try {
@@ -22,7 +22,7 @@ const createMyOrder = async (req, res) => {
     }
 }
 
-const deleteMyOrder = async (req, res) => {
+export const deleteMyOrder = async (req, res) => {
     const { id } = req.params;
     try {
       const parcel = await Parcel.findOne({ _id: id, user: req.userId });
@@ -36,7 +36,7 @@ const deleteMyOrder = async (req, res) => {
     }
 };
 
-const editMyOrder = async (req, res) => {
+export const editMyOrder = async (req, res) => {
     const { id } = req.params;
     const { parcelName, recipient, status, items, arrivalDate } = req.body;
   
@@ -59,7 +59,7 @@ const editMyOrder = async (req, res) => {
 };
 
 
-const getMyOrder = async (req, res) => {
+export const getMyOrder = async (req, res) => {
     try {
         const parcels = await Parcel.find({ user: req.userId });
         res.json(parcels);
@@ -68,5 +68,3 @@ const getMyOrder = async (req, res) => {
         res.status(500).json({ message: 'Error fetching parcels' });
     }
 }
-
-module.exports = { createOrder, deleteOrder, editOrder, getOrder }

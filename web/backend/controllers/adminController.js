@@ -1,6 +1,6 @@
-import { Parcel } from '../models/parcel';
+import { Parcel } from '../models/parcel.js';
 
-const getAllOrders = async (req, res) => {
+export const getAllOrders = async (req, res) => {
     try {
       const parcel = await Parcel.find();
       res.status(200).json(parcel);
@@ -10,7 +10,7 @@ const getAllOrders = async (req, res) => {
     }
 }; 
     
-const updateAnOrder = async (req, res) => {
+export const updateAnOrder = async (req, res) => {
     const { id } = req.params;
     const { parcelName, recipient, status, items, arrivalDate } = req.body;
   
@@ -34,5 +34,3 @@ const updateAnOrder = async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
 }
-  
-module.exports = { getAllOrders, updateAnOrder }

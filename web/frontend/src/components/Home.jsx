@@ -11,6 +11,38 @@ const Home = () => {
 
     const { isModalOpen, openModal, modalType } = useModal();
     const [selectedTab, setSelectedTab] = useState('accepted');
+    const { data, loading, error, getData } = useFetch();
+    const [orders, setOrders] = useState([]);
+
+    // For sorting orders by date (most recent first)
+    const sortOrdersByDate = (ordersList) => {
+        // Get today's date (without time, only year, month, and day)
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);  // Reset time to midnight to compare just the date
+        
+        // Filter orders to only include those with dates that are today or in the future
+        const futureOrTodayOrders = ordersList.filter(order => new Date(order.date) >= today);
+        
+        // Sort the filtered orders by date (most recent first)
+        return futureOrTodayOrders.sort((a, b) => new Date(b.date) - new Date(a.date));
+    };
+
+    useEffect(() => {
+        // Fetch user orders when component mounts
+        const fetchOrders = async () => {
+          await getData('http://localhost:5000/api/orders');  
+        };
+        fetchOrders();
+    }, []);
+
+    useEffect(() => {
+        // Once data is fetched, set the orders state
+        if (data) {
+          setOrders(sortOrdersByDate(data));  // Sort orders by date
+        }
+      }, [data]);
+
+    const filteredOrders = orders.filter((order) => order.status === selectedTab); 
 
     // FOR DEMO PURPOSES ONLY, A USE EFFECT FUNCTION SHOULD REPLACE THIS
     const products = {

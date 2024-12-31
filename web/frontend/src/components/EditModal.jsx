@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useModal } from './ModelContext.jsx'
 import { useForm } from 'react-hook-form' 
 import { X } from 'lucide-react'
@@ -8,8 +8,23 @@ const EditModal = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   // ADD FUNCTIONALITY HERE
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+        const productId = data._id; 
+    
+        // Use the updateData function from the useFetch hook to send a PUT request
+        const response = await updateData(`http://localhost:5000/api/products/${productId}`, data);
+    
+        // Check if the update was successful
+        if (response.status === 'success') {
+          console.log('Product updated successfully:', response.data);
+          closeModal('edit');  
+        } else {
+          console.error('Error updating product:', response.message);
+        }
+      } catch (error) {
+        console.error('Error updating product:', error);
+      }
   }
 
   return (

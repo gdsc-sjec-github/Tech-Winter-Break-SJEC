@@ -1,14 +1,39 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import { useFetch } from './useFetch';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const { createData, loading, error } = useFetch();
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
-  // ADD FUNCTIONALITY HERE
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    // Send the registration request
+    await createData('/api/register', { 
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        role: data.role,
+    });
+
+    // Check if registration was successful
+    if (!error) {
+      await loginUser(data);
+      navigate('/dashboard');
+    }else {
+        alert(error);
+    }
   }
+
+  const loginUser = async (data) => {
+    // Login the user immediately after registration
+    await createData('/api/login', { 
+        email: data.email, 
+        password: data.password 
+    });
+  };
 
   return (
     <div className='w-full h-full flex bg-background justify-center items-center'>

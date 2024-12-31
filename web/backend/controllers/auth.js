@@ -1,9 +1,13 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { User } from '../models/user';
+import { User } from '../models/user.js';
+import dotenv from 'dotenv';
 
-const registerUser = async (req, res) => {
+dotenv.config();
+
+export const registerUser = async (req, res) => {
     const { username, email, password, role } = req.body;
+    console.log(req.body);
       
     try {
         const existingUser = await User.findOne({ email });
@@ -14,29 +18,28 @@ const registerUser = async (req, res) => {
         }
     
         // Hash the password
-        const hashedPassword = await bcrypt.hash(password, 10);
-    
-        // Create new user
-        const newUser = new User({
-        username,
-        email,
-        password: hashedPassword,
-        role: role,
+        bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(password, salt, async function(err, hash) {
+                // Create new user
+                const newUser = new User({
+                    username,
+                    email,
+                    password: hash,
+                    role,
+                    createdAt: Date.now()
+                    });
+
+                await newUser.save();
+                res.status(201).json({ message: 'User registered successfully!' });
+            });
         });
-    
-        await newUser.save();
-    
-        // Return success message
-        res.status(201).json({ message: 'User registered successfully!' });
     } catch (err) {
-        console.error(err);
         res.status(500).json({ message: 'Server error' });
     }
 }
 
-const loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
     const { email, password } = req.body;
-    // LEARN HOW THIS JWT STUFF WORKS BEFORE HOSTING
     try {
         // Find user by email
         const user = await User.findOne({ email });
@@ -48,18 +51,23 @@ const loginUser = async (req, res) => {
     
         // Check if password matches
         const isMatch = await bcrypt.compare(password, user.password);
+        
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
     
         // Generate JWT token
-        const token = jwt.sign({ userId: user._id, role: user.role }, 'your-secret-key', { expiresIn: '1h' });
+        const token = jwt.sign({ email: user.email, role: user.role }, process.env.SECRET_KEY);
+        
+        res.cookie('token', token, {
+            httpOnly: true, 
+            sameSite: 'strict'
+        });
     
-        res.status(200).json({ message: 'Login successful', token });
+        res.status(200).json({ message: 'Login successful' });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Server error' });
     }
 }
 
-module.exports = { registerUser, loginUser }

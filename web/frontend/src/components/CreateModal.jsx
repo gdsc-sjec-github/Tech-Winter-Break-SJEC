@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
 import { useModal } from './ModelContext.jsx'
 import { useForm } from 'react-hook-form' 
+import { useFetch } from './useFetch';  
 import { X } from 'lucide-react'
 
 const CreateModal = () => {
   const { closeModal } = useModal();
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const { createData, loading, error } = useFetch();  
 
   // ADD FUNCTIONALITY HERE
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+        const response = await createData('http://localhost:5000/api/products', data);
+  
+        if (response.status === 'success') {
+          console.log('Product created successfully:', response.data);
+          closeModal('create');  
+        } else {
+          console.error('Error creating product:', response.message);
+        }
+      } catch (error) {
+        console.error('Error creating product:', error);
+    }
   }
 
   return (
