@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/static/home.css" />
+    <script src="../custom-scripts.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <!-- Header Start -->
+      <header>
+        <nav class="nav container">
+          <h2 class="nav_logo">Engineering Community Platform</h2>
+
+          <ul class="menu_items">
+            <li><a href="/about" class="nav_link">About</a></li>
+            <li><a href="/register" >Login</a></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- Header End -->
+
+      <!-- Hero Start -->
+      <section class="hero">
+        <div class="row container">
+          <div class="column">
+            <h2>Mentorship Connect:<br />Bridging Juniors and Seniors for Smarter Learning</h2>
+            <p>A collaborative platform where juniors can post their academic or career-related queries, and experienced seniors guide them with expert advice and resources.Build connections, share knowledge, and grow together as a thriving engineering community!! </p>
+            <div class="buttons">
+                <a href="/register">
+              <button class="btn" href="/register'">Login</button>
+            </a></div>
+          </div>
+          <div class="column">
+            <img src="/static/Images/homeimg.jpg" alt="heroImg" class="hero_img" />
+          </div>
+        </div>
+      </section>
+      <!-- Hero End-->
+    </main>
+    
+    
+    
+
+    <script>
+      const header = document.querySelector("header");
+      const menuToggler = document.querySelectorAll("#menu_toggle");
+
+      menuToggler.forEach(toggler => 
+        toggler.addEventListener("click", () => header.classList.toggle("showMenu")));
+    </script><center>
+        <h2 class="nav_logo">&nbsp;  &nbsp;  &nbsp;E X P L O R E  &nbsp;  &nbsp;  &nbsp;&nbsp;F EA T U R E S</h2>
+<section class="container1">
+    
+    
+    <div class="card">
+      <div class="image">
+       <img src="/static/Images/featureimg1.jpg" alt="img" />
+      </div>
+      <h2>Mentorship Connections</h2>
+      <p>Connect with seniors of your college to gain valuable insights and guidance for your engineering journey and projects.</p>
+    </div>
+    <div class="card">
+      <div class="image">
+        <img src="/static/Images/query.jpg" alt="img" />
+      </div>
+      <h2>Public Query Posting</h2>
+      <p>Engage with the community by posting engineering queries and recieving diverse solutions from seniors.</p>
+    </div>
+    <div class="card">
+      <div class="image">
+        <img src="/static/Images/featureimg3.jpg" alt="img" />
+      </div>
+      <h2>Resources handpicked by your seniors</h2>
+      <p>Materials ranging from study notes to project guides are specifically curated to address the challenges juniors face from those who have been in their shoes.</p>
+    </div>
+  </section>
+</center>
+<br><br><br>
+  </body>
+</html>
