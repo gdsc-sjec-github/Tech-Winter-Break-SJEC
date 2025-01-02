@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+body {
+    background-image: url(astronomy-background.jpg);
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+.card {
+    width: 90%;
+    max-width: 470px;
+    background: linear-gradient(0deg, #003049, #a2d2ff);
+    color: #fff;
+    margin: 100px auto 0;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.search input {
+    border: 0;
+    outline: 0;
+    padding: 10px 25px;
+    height: 60px;
+    border-radius: 30px;
+    flex: 1;
+    margin-right: 16px;
+    font-family: Open Sans;
+    font-size: 30px;
+}
+
+.search button {
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    margin-top: 6px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    font-size: 25px;
+
+}
+
+#weather-icon {
+    width: 100px;
+}
+
+.weather h1 {
+    font-size: 80px;
+    font-weight: 500;
+
+}
+
+.weather h2 {
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 50px;
+
+}
+
+.col {
+    display: flex;
+    align-items: center;
+    text-align: left;
+
+}
+
+.search img {
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    margin-top: 6px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
