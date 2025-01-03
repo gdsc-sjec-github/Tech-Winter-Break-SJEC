@@ -117,7 +117,15 @@ export const updateProfile = async (req, res) => {
       return res.status(400).json({ message: "Profile pic is required" });
     }
 
-    const uploadResponse = await cloudinary.uploader.upload(profilePic);
+    // Upload to Cloudinary with transformations for resizing
+    const uploadResponse = await cloudinary.uploader.upload(profilePic, {
+      transformation: [
+        { width: 300, height: 300, crop: "fill", gravity: "face" } // Resize to 300x300 and focus on the face
+      ],
+      folder: "profile_pics", // Optional: Organize uploads into a specific folder
+    });
+
+    // Update the user with the new profile picture URL
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       { profilePic: uploadResponse.secure_url },
@@ -126,7 +134,13 @@ export const updateProfile = async (req, res) => {
 
     res.status(200).json(updatedUser);
   } catch (error) {
-    console.log("Error in update profile:", error.message);
+    console.error("Error in update profile:", error.message);
+
+    // Handle specific Cloudinary errors
+    if (error.http_code && error.http_code === 400) {
+      return res.status(400).json({ message: "Invalid image format" });
+    }
+
     res.status(500).json({ message: "Internal Server Error" });
   }
 };

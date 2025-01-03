@@ -71,14 +71,27 @@ export const useAuthStore = create((set, get) => ({
 
   updateProfile: async (data) => {
     set({ isUpdatingProfile: true });
+  
     try {
       const res = await axiosInstance.put("/auth/update-profile", data);
+  
+      // Update the auth user in the state with the new profile data
       set({ authUser: res.data });
+  
+      // Show success toast notification
       toast.success("Profile updated successfully");
     } catch (error) {
-      const errorMessage = error.response?.data?.message || "An error occurred while updating profile";
+      // Extract a meaningful error message from the response
+      const errorMessage =
+        error.response?.data?.message ||
+        (error.response?.status === 400
+          ? "Invalid image format or missing data"
+          : "An error occurred while updating profile");
+  
+      // Show error toast notification
       toast.error(errorMessage);
     } finally {
+      // Reset the `isUpdatingProfile` state
       set({ isUpdatingProfile: false });
     }
   },
