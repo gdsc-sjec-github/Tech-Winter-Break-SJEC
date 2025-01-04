@@ -15,3 +15,8 @@ Docusphere is a modern file management system that allows users to organize thei
 - *Edit and Save*: Make changes to files directly within the platform and save updates.
 - *Download*: Download files or folders to your local device.
 - *Delete*: Permanently remove files and folders you no longer need.
+## Youtube link
+https://youtu.be/L5Rr1O2qRFE
+
+## Deployment
+https://docu-sphere.vercel.app/
