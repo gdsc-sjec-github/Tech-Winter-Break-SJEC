@@ -1,0 +1,61 @@
+[33mcda980c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Merge pull request #8 from Shraavyaa/main
+[33me61d2e6[m Merge branch 'main' into main
+[33mb05f762[m ....
+[33me46256d[m sh
+[33m83028c0[m s
+[33m1c1ce08[m Merge pull request #7 from varun-karmikanda/frontend
+[33mf41e837[m Merge branch 'main' into frontend
+[33mb3d412d[m Merge pull request #6 from Shraavyaa/main
+[33mee3880e[m .......
+[33m30c5406[m Merge branch 'main' into frontend
+[33m3251bbd[m shravya
+[33m13122c6[m Remove tailwind config
+[33m851cfae[m update package and yarn lock, add hero image
+[33m7a2cb30[m Register page styling
+[33mfeafe56[m Login page styling
+[33m09f62b4[m delete thing is updated
+[33m4de71a6[m sh
+[33m769f659[m sh
+[33mb2ce4b6[m Merge pull request #5 from StalinPrevanCrasta/main
+[33m0031886[m feat: add drag-and-drop functionality to move files into other folders
+[33m36e6acb[m feat: add drag-and-drop functionality to move folders into other folders
+[33m402d894[m .....
+[33m04a8f45[m files done
+[33m6ff9454[m ...
+[33m730dbcd[m fixed
+[33mf9bb846[m Merge branch 'main' of https://github.com/Shivani-rao123/FileManagement
+[33m1686752[m Fixed HomeComponents and resolved errors
+[33m45b66d6[m ...
+[33m9709558[m Merge pull request #4 from StalinPrevanCrasta/main
+[33m2471d8f[m Merge branch 'main' into main
+[33m5d68358[m Merge pull request #3 from varun-karmikanda/new-bug
+[33m3e54bcd[m Merge pull request #2 from varun-karmikanda/main
+[33m5a3294c[m fix: correct URL path and ensure proper parent for folder creation
+[33mb16b3b7[m Merge branch 'main' of https://github.com/varun-karmikanda/FileManagement into new-bug Merged latest changes from main into new-bug to keep the branch up to date
+[33mc7234e6[m optimize selector to prevent unnecessary rerenders
+[33m0228b62[m major changes
+[33mf4e6eb5[m Add @fortawesome/free-solid-svg-icons dependency to package-lock.json
+[33m856730a[m Fix text placement and link structure in Register component
+[33m353f754[m Add favicon and update page title
+[33m3db9b39[m Fix text placement and link structure in Login component
+[33m3a483db[m Add favicon SVG for project branding
+[33m8fdbe7a[m Merge pull request #1 from StalinPrevanCrasta/main
+[33m7caf44e[m fix: prevent creation of duplicate folder names
+[33mb09ee49[m ....
+[33m3ac5ffb[m u cant create duplicate folder
+[33mee54bd3[m to show the folder is empty
+[33m9cc50cb[m ....
+[33mde1655e[m folder strucrure
+[33mb6d3669[m .....
+[33mcbdfb02[m connected to firebase
+[33m8c0fc90[m .....
+[33m8855e19[m hello
+[33mdd33e0f[m filefolders in the redux
+[33mcf57f29[m ......
+[33m2d0fb72[m ....
+[33mff88f1a[m major changes
+[33m4c371f1[m changes in package.json file
+[33mac534bd[m change in nav
+[33m56b6dcc[m .....
+[33mce98570[m .....
+[33m39e0811[m Initial commit

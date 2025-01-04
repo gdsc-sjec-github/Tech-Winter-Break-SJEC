@@ -1,0 +1,100 @@
+.home-container {
+  min-height: 100vh;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  padding: 1rem 2rem;
+  background-color: transparent;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.heading {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-shadow: 0 0 10px #BB86FC, 0 0 20px #BB86FC, 0 0 30px #BB86FC;
+  animation: fadeIn 2s ease-in-out, scaleUp 1.5s ease-in-out, glowEffect 1.5s ease-in-out infinite;
+}
+
+.button-container {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.button-container button {
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.button-container button:hover {
+  background-color: white;
+  color: black;
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes glowEffect {
+  0% {
+    text-shadow: 0 0 10px #BB86FC, 0 0 20px #BB86FC, 0 0 30px #BB86FC;
+  }
+  50% {
+    text-shadow: 0 0 15px #BB86FC, 0 0 25px #BB86FC, 0 0 35px #BB86FC;
+  }
+  100% {
+    text-shadow: 0 0 10px #BB86FC, 0 0 20px #BB86FC, 0 0 30px #BB86FC;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  .button-container button {
+    width: 200px;
+  }
+} 
