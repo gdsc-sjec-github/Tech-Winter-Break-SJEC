@@ -1,0 +1,40 @@
+/* SubBar.css */
+.navbar {
+  background-color: #1a1a1a; /* Dark background for navbar */
+}
+
+.navbar-nav .nav-item .btn {
+  color: #ffffff; /* White text for buttons */
+  background-color: transparent; /* Transparent background */
+  border: 2px solid #ffffff; /* White border */
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3); /* Subtle hover effect with white shadow */
+}
+
+.navbar-nav .nav-item .btn-outline-dark {
+  color: #ffffff; /* White text for dark outline buttons */
+  border-color: #ffffff; /* White border */
+}
+
+.navbar-nav .nav-item .btn-outline-dark:hover {
+  background-color: #ffffff;
+  color: #1a1a1a; /* Dark text on hover */
+}
+
+/* Specific styling for Delete button */
+.navbar-nav .nav-item .btn-outline-danger {
+  color: #ffffff; /* White text for delete button */
+  border-color: #ff4d4d; /* Red border for delete button */
+}
+
+.navbar-nav .nav-item .btn-outline-danger:hover {
+  background-color: #ff4d4d; /* Red background on hover */
+  color: #ffffff; /* White text on hover */
+}

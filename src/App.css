@@ -1,0 +1,132 @@
+/* Ensure the entire page background is black */
+body {
+  background-color: black;
+  color: white; /* White text to contrast with black background */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh; /* Full screen height */
+}
+
+/* Navbar styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black; /* Navbar background black */
+  padding: 10px 20px;
+  z-index: 1000;
+  /* Removed the border-bottom to eliminate the white line */
+}
+
+/* Main container to center everything */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center */
+  align-items: center; /* Horizontally center */
+  background-color: black;
+  color: white;
+  height: 100vh; /* Make sure it takes the full height of the viewport */
+  text-align: center; /* Center text horizontally */
+}
+
+/* Main content styling */
+.content {
+  margin-top: 60px; /* Add space for the fixed navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center */
+  align-items: center; /* Horizontally center */
+}
+
+.heading {
+  font-size: 5rem; /* Increased font size */
+  margin-bottom: 30px; /* Space between heading and buttons */
+  animation: fadeIn 2s ease-in-out, slideUp 2s ease-in-out; /* Animation effects */
+}
+
+/* Animation for DOCUSPHERE heading */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Button container styling */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Oval-shaped buttons */
+.main-button {
+  padding: 15px 40px; /* Increased horizontal padding for oval shape */
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 2px solid white;
+  background-color: black; /* Button background black */
+  color: white; /* Button text white */
+  border-radius: 50px; /* Make the button oval */
+}
+
+.main-button:hover {
+  background-color: white;
+  color: black;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes glowEffect {
+  0% {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 10px rgba(0, 255, 255, 0.6), 0 0 15px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.9), 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.7);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 10px rgba(0, 255, 255, 0.6), 0 0 15px rgba(0, 255, 255, 0.5);
+  }
+}
+
+button:hover {
+  transform: scale(1.1); /* Slightly increases the button size on hover */
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5); /* Glowing effect on hover */
+}
+
+button:active {
+  transform: scale(0.95); /* Slightly decrease the size when the button is clicked */
+  transition: transform 0.1s ease; /* Adds a quick transition */
+}
+
+button {
+  transition: box-shadow 0.3s ease, transform 0.2s ease; /* Smooth transitions for both box-shadow and transform */
+}
