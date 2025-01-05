@@ -64,6 +64,7 @@ AI-based recommendations for personalized content.
 Gamification (badges, points) to encourage engagements
 
 **Demo Video**
-
+[DEMO VIDEO](web/DEMO.mp4)
 
 **Screenshots**
+[SCREENSHOTS](web/web_screeenshots)
