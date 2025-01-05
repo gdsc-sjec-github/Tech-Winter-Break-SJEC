@@ -1,0 +1,42 @@
+nav{
+    background-color: #09a370;
+}
+nav ul
+{
+   margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav ul li
+{
+    list-style: none;
+    margin-left: 20px;
+}
+nav ul li a
+{
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #fff;
+    border-radius: 20px;
+}
+nav ul li a:hover,
+nav ul li a.active
+{
+    background: #fff;
+    color: #10b981;
+}
+#title{
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+body{
+    background-color: #e6fffa;
+}
+.mb-12{
+    background-color: #fff;
+}
