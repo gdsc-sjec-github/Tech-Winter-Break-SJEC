@@ -110,19 +110,24 @@ export const logout = (req, res) => {
 
 export const updateProfile = async (req, res) => {
   try {
-    const { profilePic } = req.body;
+    const { profilePic } = req.body; // Base64 or image URL
     const userId = req.user._id;
 
     if (!profilePic) {
       return res.status(400).json({ message: "Profile pic is required" });
     }
 
-    // Upload to Cloudinary with transformations for resizing
+    // Upload to Cloudinary with transformations for resizing and compression
     const uploadResponse = await cloudinary.uploader.upload(profilePic, {
       transformation: [
-        { width: 300, height: 300, crop: "fill", gravity: "face" } // Resize to 300x300 and focus on the face
+        { width: 300, height: 300, crop: "fill", gravity: "face" }, // Resize to 300x300 pixels
+        { quality: "auto:low" }, // Reduce quality for smaller file size
+        { fetch_format: "auto" }, // Automatically optimize the format (e.g., WebP)
+        { dpr: "auto" } // Adjust for optimal display resolution
       ],
-      folder: "profile_pics", // Optional: Organize uploads into a specific folder
+      folder: "profile_pics", // Optional: Save in a specific folder
+      overwrite: true, // Overwrite existing image if re-uploading
+      resource_type: "image" // Specify the file type
     });
 
     // Update the user with the new profile picture URL
@@ -134,16 +139,17 @@ export const updateProfile = async (req, res) => {
 
     res.status(200).json(updatedUser);
   } catch (error) {
-    console.error("Error in update profile:", error.message);
+    console.error("Error in updateProfile:", error.message);
 
     // Handle specific Cloudinary errors
     if (error.http_code && error.http_code === 400) {
-      return res.status(400).json({ message: "Invalid image format" });
+      return res.status(400).json({ message: "Invalid image format or file size too large" });
     }
 
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
 
 export const checkAuth = (req, res) => {
   try {
